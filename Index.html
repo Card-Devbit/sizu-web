@@ -1,105 +1,84 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIZU - Tu esencia, en cada detalle</title>
-    
-    <!-- Google Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        sizu: { pink: '#fcf5f6', maroon: '#8e384e', dusty: '#c98a9b', white: '#ffffff' }
-                    },
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['Montserrat', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'soft': '0 10px 25px -5px rgba(142, 56, 78, 0.1), 0 8px 10px -6px rgba(142, 56, 78, 0.1)',
-                    }
-                }
-            }
-        }
+        tailwind.config = { theme: { extend: { colors: { sizu: { pink: '#fcf5f6', maroon: '#8e384e', dusty: '#c98a9b' } }, fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['Montserrat', 'sans-serif'] } } } }
     </script>
 </head>
-<body class="bg-sizu-pink text-sizu-maroon font-sans antialiased selection:bg-sizu-dusty selection:text-white">
+<body class="bg-sizu-pink text-sizu-maroon font-sans min-h-screen flex flex-col">
 
-    <!-- Header -->
+    <!-- Header con menú responsivo y Logo -->
     <header class="fixed w-full top-0 z-50 bg-sizu-pink/90 backdrop-blur-md border-b border-sizu-maroon/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-3 cursor-pointer">
-                    <img src="image_c21069.jpg" alt="SIZU Logo" class="h-12 w-12 rounded-full object-cover border border-sizu-maroon/20">
-                    <span class="font-serif text-3xl font-semibold tracking-widest text-sizu-maroon">SIZU</span>
+                    <img src="logo.png" alt="Logo SIZU" class="h-14 w-14 rounded-full object-cover border-2 border-white shadow-sm">
                 </div>
+                
                 <nav class="hidden md:flex space-x-8">
                     <a href="#inicio" class="text-sm uppercase tracking-wider font-medium hover:text-sizu-dusty">Inicio</a>
                     <a href="#ropa" class="text-sm uppercase tracking-wider font-medium hover:text-sizu-dusty">Ropa</a>
                 </nav>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-sizu-maroon hover:text-sizu-dusty focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-sizu-pink border-t border-sizu-maroon/10 absolute w-full shadow-soft">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+                <a href="#inicio" class="block px-3 py-2 text-base font-medium hover:bg-sizu-maroon/5 rounded-md">Inicio</a>
+                <a href="#ropa" class="block px-3 py-2 text-base font-medium hover:bg-sizu-maroon/5 rounded-md">Ropa</a>
             </div>
         </div>
     </header>
 
-    <!-- Hero -->
-    <section id="inicio" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center gap-12">
-            <div class="w-full lg:w-1/2 text-center lg:text-left">
-                <h1 class="font-serif text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                    Tu esencia,<br> <span class="italic font-light">en cada detalle</span>
-                </h1>
-                <p class="text-lg font-light leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
-                    Descubre nuestra selección de moda circular. Cada prenda es una <span class="font-medium">pieza única</span> con historia.
-                </p>
-                <a href="#ropa" class="inline-block bg-sizu-maroon text-white font-medium uppercase tracking-widest text-sm px-10 py-4 rounded-full shadow-soft hover:bg-[#732a3d] transition-all">
-                    Ver Colección Única
-                </a>
-            </div>
-            <div class="w-full lg:w-1/2 relative">
-                <img src="image_c21070.jpg" alt="Sizu Tu Esencia" class="w-full h-full object-cover rounded-[2rem] shadow-soft">
-            </div>
+    <!-- Banner Principal -->
+    <section id="inicio" class="pt-20 w-full bg-sizu-pink flex justify-center">
+        <div class="w-full max-w-7xl shadow-sm">
+            <img src="banner.png" alt="SIZU: Tu esencia, en cada detalle." class="w-full h-auto object-cover object-center">
         </div>
     </section>
 
-    <!-- Ropa (Contenedor Dinámico) -->
-    <section id="ropa" class="py-20 bg-sizu-pink/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-serif text-4xl font-bold mb-4">Tesoros Pre-Loved</h2>
-                <div class="w-24 h-1 bg-sizu-dusty mx-auto mt-6 rounded-full opacity-50"></div>
-            </div>
-
-            <!-- AQUÍ SE INYECTAN LAS TARJETAS DESDE app.js -->
-            <div id="contenedor-productos" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="col-span-full flex flex-col items-center justify-center py-20">
-                    <i class="fa-solid fa-circle-notch fa-spin text-4xl text-sizu-dusty mb-4"></i>
-                    <p class="font-serif text-lg font-medium">Buscando tesoros únicos...</p>
-                </div>
+    <!-- Catálogo de Productos -->
+    <main id="ropa" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-grow w-full">
+        <div class="text-center mb-12">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">Nuestra Colección</h2>
+            <div class="h-1 w-20 bg-sizu-dusty mx-auto rounded-full"></div>
+        </div>
+        
+        <div id="contenedor-productos" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="col-span-full flex justify-center py-12">
+                <i class="fa-solid fa-spinner fa-spin text-4xl text-sizu-dusty"></i>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Conexión a JavaScript -->
-    <script type="module" src="app.js"></script>
-</body>
-<!-- Footer con acceso anti-tontos para el administrador -->
-    <footer class="bg-white border-t border-sizu-maroon/10 mt-16 py-8">
+    <!-- Footer con acceso anti-tontos -->
+    <footer class="bg-white border-t border-sizu-maroon/10 mt-auto py-8">
         <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
             <p class="text-sm text-gray-500 mb-4 font-sans">© 2026 SIZU Esencials. Todos los derechos reservados.</p>
             
-            <!-- Botón de administración discreto pero fácil de usar -->
             <a href="admin.html" class="inline-flex items-center text-xs font-bold text-sizu-dusty hover:text-sizu-maroon transition-colors bg-sizu-pink/30 hover:bg-sizu-pink px-4 py-2 rounded-full border border-transparent hover:border-sizu-dusty/30">
                 <i class="fa-solid fa-lock mr-2"></i> Administrar Tienda
             </a>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+    <script type="module" src="app.js"></script>
+</body>
 </html>
