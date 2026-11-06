@@ -52,7 +52,7 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
             <div>
-                <h2 class="font-bold text-lg mb-4 text-sizu-dusty"><i class="fa-solid fa-plus mr-2"></i>Nueva Prenda</h2>
+                <h2 id="titulo-formulario" class="font-bold text-lg mb-4 text-sizu-dusty"><i class="fa-solid fa-plus mr-2"></i>Nueva Prenda</h2>
                 <form id="form-producto" class="space-y-4">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
@@ -83,13 +83,20 @@
                             <select id="estado" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-sizu-maroon">
                                 <option value="Disponible">Disponible</option>
                                 <option value="Reservado">Reservado</option>
+                                <option value="Vendido">Vendido (Ocultar de tienda)</option>
                             </select>
                         </div>
                     </div>
 
-                    <button type="submit" id="btn-guardar" class="w-full mt-6 bg-sizu-maroon text-white font-semibold py-3 rounded-xl hover:bg-[#732a3d] transition-colors">
-                        <i class="fa-solid fa-cloud-arrow-up mr-2"></i> Subir Prenda
-                    </button>
+                    <!-- Botones de Acción -->
+                    <div class="flex gap-3 mt-6">
+                        <button type="submit" id="btn-guardar" class="w-full bg-sizu-maroon text-white font-semibold py-3 rounded-xl hover:bg-[#732a3d] transition-colors">
+                            <i class="fa-solid fa-cloud-arrow-up mr-2"></i> Subir Prenda
+                        </button>
+                        <button type="button" id="btn-cancelar" class="hidden w-1/3 bg-gray-200 text-gray-700 font-semibold py-3 rounded-xl hover:bg-gray-300 transition-colors">
+                            Cancelar
+                        </button>
+                    </div>
                     <div id="mensaje-sistema" class="hidden text-center text-sm font-medium py-2 rounded-lg mt-4"></div>
                 </form>
             </div>
