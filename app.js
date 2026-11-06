@@ -1,8 +1,7 @@
-// Archivo: app.js
 import { db } from "./firebase-config.js";
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-const NUMERO_WHATSAPP = "50500000000"; // Pon tu número aquí
+const NUMERO_WHATSAPP = "50500000000"; // Pon tu número de WhatsApp aquí
 
 document.addEventListener("DOMContentLoaded", () => {
     cargarProductos();
@@ -12,30 +11,33 @@ async function cargarProductos() {
     const contenedor = document.getElementById("contenedor-productos");
     
     try {
-        // Pedimos los datos a la colección "productos" en Firestore
         const querySnapshot = await getDocs(collection(db, "productos"));
-        contenedor.innerHTML = ""; // Quitamos el spinner de carga
+        contenedor.innerHTML = ""; 
 
         if (querySnapshot.empty) {
             contenedor.innerHTML = `<p class="col-span-full text-center font-serif text-xl">Aún no hay tesoros disponibles. ¡Vuelve pronto!</p>`;
             return;
         }
 
-        // Recorremos los productos
+        let hayProductos = false;
         querySnapshot.forEach((doc) => {
             const producto = doc.data();
-            // Mostramos la prenda si no está vendida
             if (producto.estado !== "Vendido") {
                 contenedor.innerHTML += crearTarjeta(producto);
+                hayProductos = true;
             }
         });
+
+        if (!hayProductos) {
+            contenedor.innerHTML = `<p class="col-span-full text-center font-serif text-xl">Aún no hay tesoros disponibles. ¡Vuelve pronto!</p>`;
+        }
+
     } catch (error) {
         console.error("Error al cargar Firebase:", error);
         contenedor.innerHTML = `<p class="col-span-full text-center text-red-500 font-serif">Error al conectar con el armario.</p>`;
     }
 }
 
-// Función para dibujar la tarjeta
 function crearTarjeta(producto) {
     const precioFormat = `$${parseFloat(producto.precio).toFixed(2)}`;
     const mensaje = `Hola, SIZU. Estoy interesada en la prenda: ${producto.nombre} de ${precioFormat}. ¿Todavía está disponible?`;
