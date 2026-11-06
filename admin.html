@@ -13,7 +13,6 @@
 </head>
 <body class="bg-sizu-pink text-sizu-maroon font-sans min-h-screen p-4 flex flex-col items-center justify-center py-10">
 
-    <!-- SECCIÓN LOGIN -->
     <div id="login-section" class="w-full max-w-md bg-white rounded-3xl shadow-lg p-8">
         <div class="text-center mb-8">
             <img src="logo.png" alt="Logo" class="h-16 w-16 mx-auto rounded-full mb-4 border-2 border-sizu-pink">
@@ -40,7 +39,6 @@
         </div>
     </div>
 
-    <!-- SECCIÓN PANEL DE ADMINISTRACIÓN -->
     <div id="admin-section" class="hidden w-full max-w-4xl bg-white rounded-3xl shadow-lg p-6 md:p-10">
         <div class="flex justify-between items-center mb-8 border-b pb-4">
             <div>
@@ -53,7 +51,6 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <!-- Columna Izquierda: Subir Prenda -->
             <div>
                 <h2 class="font-bold text-lg mb-4 text-sizu-dusty"><i class="fa-solid fa-plus mr-2"></i>Nueva Prenda</h2>
                 <form id="form-producto" class="space-y-4">
@@ -70,7 +67,7 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium mb-1">Precio (USD)</label>
+                            <label class="block text-sm font-medium mb-1">Precio (C$)</label>
                             <input type="number" id="precio" step="0.01" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-sizu-maroon">
                         </div>
                         <div class="col-span-2">
@@ -97,7 +94,6 @@
                 </form>
             </div>
 
-            <!-- Columna Derecha: Inventario Actual (Para Borrar) -->
             <div>
                 <h2 class="font-bold text-lg mb-4 text-sizu-dusty"><i class="fa-solid fa-boxes-stacked mr-2"></i>Inventario Actual</h2>
                 <div id="lista-inventario" class="space-y-3 h-96 overflow-y-auto pr-2">

@@ -10,12 +10,11 @@ const btnLogout = document.getElementById('btn-logout');
 const mensajeSistema = document.getElementById('mensaje-sistema');
 const listaInventario = document.getElementById('lista-inventario');
 
-// 1. Control de Sesión
 onAuthStateChanged(auth, (user) => {
     if (user) {
         loginSection.classList.add('hidden');
         adminSection.classList.remove('hidden');
-        cargarInventario(); // Cargar la ropa apenas entramos
+        cargarInventario(); 
     } else {
         loginSection.classList.remove('hidden');
         adminSection.classList.add('hidden');
@@ -35,7 +34,6 @@ formLogin.addEventListener('submit', async (e) => {
 
 btnLogout.addEventListener('click', async () => await signOut(auth));
 
-// 2. Guardar Nueva Prenda (Con enlace)
 formProducto.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btnGuardar = document.getElementById('btn-guardar');
@@ -59,7 +57,7 @@ formProducto.addEventListener('submit', async (e) => {
         mensajeSistema.classList.remove('hidden');
         formProducto.reset(); 
         
-        cargarInventario(); // Refrescar la lista de la derecha
+        cargarInventario(); 
 
     } catch (error) {
         console.error(error);
@@ -72,7 +70,6 @@ formProducto.addEventListener('submit', async (e) => {
     }
 });
 
-// 3. Cargar el inventario para poder borrar
 async function cargarInventario() {
     listaInventario.innerHTML = '<p class="text-sm text-gray-500 text-center py-4"><i class="fa-solid fa-spinner fa-spin"></i> Cargando...</p>';
     try {
@@ -86,15 +83,16 @@ async function cargarInventario() {
 
         querySnapshot.forEach((doc) => {
             const prod = doc.data();
-            const id = doc.id; // El ID único de la base de datos
+            const id = doc.id; 
             
+            // Refleja moneda en Córdobas (C$) en la vista del administrador
             listaInventario.innerHTML += `
                 <div class="flex items-center justify-between bg-gray-50 p-3 rounded-xl border border-gray-200">
                     <div class="flex items-center gap-3 overflow-hidden">
                         <img src="${prod.imagen}" class="w-12 h-12 object-cover rounded-lg border border-gray-300">
                         <div>
                             <p class="font-bold text-sm text-gray-800 truncate w-32">${prod.nombre}</p>
-                            <p class="text-xs text-sizu-dusty font-medium">$${prod.precio} - ${prod.estado}</p>
+                            <p class="text-xs text-sizu-dusty font-medium">C$${prod.precio} - ${prod.estado}</p>
                         </div>
                     </div>
                     <button data-id="${id}" class="btn-eliminar bg-red-100 hover:bg-red-200 text-red-600 p-2 rounded-lg transition-colors">
@@ -108,7 +106,6 @@ async function cargarInventario() {
     }
 }
 
-// 4. Eliminar Prenda cuando se hace clic en el botón rojo
 listaInventario.addEventListener('click', async (e) => {
     const btn = e.target.closest('.btn-eliminar');
     if (btn) {
@@ -118,7 +115,7 @@ listaInventario.addEventListener('click', async (e) => {
             try {
                 btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
                 await deleteDoc(doc(db, "productos", idProducto));
-                cargarInventario(); // Recargar lista tras borrar
+                cargarInventario();
             } catch (error) {
                 alert("Hubo un error al eliminar. Intenta de nuevo.");
             }

@@ -39,7 +39,8 @@ async function cargarProductos() {
 }
 
 function crearTarjeta(producto) {
-    const precioFormat = `$${parseFloat(producto.precio).toFixed(2)}`;
+    // Cambio a Córdobas (C$)
+    const precioFormat = `C$${parseFloat(producto.precio).toFixed(2)}`;
     const mensaje = `Hola, SIZU. Estoy interesada en la prenda: ${producto.nombre} de ${precioFormat}. ¿Todavía está disponible?`;
     const urlWa = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
 

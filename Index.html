@@ -13,7 +13,6 @@
 </head>
 <body class="bg-sizu-pink text-sizu-maroon font-sans min-h-screen flex flex-col">
 
-    <!-- Header con menú responsivo y Logo -->
     <header class="fixed w-full top-0 z-50 bg-sizu-pink/90 backdrop-blur-md border-b border-sizu-maroon/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
@@ -21,40 +20,33 @@
                     <img src="logo.png" alt="Logo SIZU" class="h-14 w-14 rounded-full object-cover border-2 border-white shadow-sm">
                 </div>
                 
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#inicio" class="text-sm uppercase tracking-wider font-medium hover:text-sizu-dusty">Inicio</a>
-                    <a href="#ropa" class="text-sm uppercase tracking-wider font-medium hover:text-sizu-dusty">Ropa</a>
-                </nav>
-
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-sizu-maroon hover:text-sizu-dusty focus:outline-none">
+                <!-- Botón de menú (Ahora visible siempre en PC y Celular) -->
+                <div class="flex items-center">
+                    <button id="mobile-menu-btn" class="text-sizu-maroon hover:text-sizu-dusty focus:outline-none transition-colors">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
         
-        <!-- Menú de Celular -->
-        <div id="mobile-menu" class="hidden md:hidden bg-sizu-pink border-t border-sizu-maroon/10 absolute w-full shadow-soft">
+        <!-- Menú Desplegable -->
+        <div id="mobile-menu" class="hidden bg-sizu-pink border-t border-sizu-maroon/10 absolute w-full shadow-soft">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
-                <a href="#inicio" class="block px-3 py-2 text-base font-medium hover:bg-sizu-maroon/5 rounded-md">Inicio</a>
-                <a href="#ropa" class="block px-3 py-2 text-base font-medium hover:bg-sizu-maroon/5 rounded-md">Ropa</a>
-                <!-- Botón de Admin oculto en el menú -->
-                <a href="admin.html" class="block px-3 py-2 text-base font-bold text-sizu-dusty hover:bg-sizu-maroon/5 rounded-md mt-4 border-t border-sizu-maroon/10 pt-4">
+                <a href="#inicio" class="block px-3 py-2 text-base font-medium hover:bg-sizu-maroon/5 rounded-md transition-colors">Inicio</a>
+                <a href="#ropa" class="block px-3 py-2 text-base font-medium hover:bg-sizu-maroon/5 rounded-md transition-colors">Ropa</a>
+                <a href="admin.html" class="block px-3 py-2 text-base font-bold text-sizu-dusty hover:bg-sizu-maroon/5 rounded-md mt-4 border-t border-sizu-maroon/10 pt-4 transition-colors">
                     <i class="fa-solid fa-lock text-xs mr-1"></i> Panel Admin
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- Banner Principal -->
     <section id="inicio" class="pt-20 w-full bg-sizu-pink flex justify-center">
         <div class="w-full max-w-7xl shadow-sm">
             <img src="banner.png" alt="SIZU: Tu esencia, en cada detalle." class="w-full h-auto object-cover object-center">
         </div>
     </section>
 
-    <!-- Catálogo de Productos -->
     <main id="ropa" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-grow w-full">
         <div class="text-center mb-12">
             <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">Nuestra Colección</h2>
@@ -68,7 +60,6 @@
         </div>
     </main>
 
-    <!-- Footer limpio -->
     <footer class="bg-white border-t border-sizu-maroon/10 mt-auto py-8 text-center">
         <p class="text-sm text-gray-500 font-sans">© 2026 SIZU Esencials. Todos los derechos reservados.</p>
     </footer>
